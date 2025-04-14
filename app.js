@@ -81,9 +81,9 @@ document.addEventListener('DOMContentLoaded', function() {
             "Method": "CleverTap.pushEvent"
         };
         
-        if (window.CleverTap) {
+        if (window.webview_var) {
             // Call Android interface with proper JSON stringification
-            CleverTap.pushEvent("Button Clicked", JSON.stringify(props));
+            webview_var.pushEvent("Button Clicked", JSON.stringify(props));
             logEvent('Event: Button Click tracked via window.CleverTap');
         } else {
             logEvent('Warning: window.CleverTap interface not found');
