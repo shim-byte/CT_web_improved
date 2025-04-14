@@ -72,6 +72,24 @@ document.addEventListener('DOMContentLoaded', function() {
         logEvent('Event: Button Click tracked');
     });
 
+    // Track button click using window.clevertap
+    document.getElementById('btn-window-clevertap').addEventListener('click', function() {
+        // Using window.CleverTap explicitly (note the capital 'C' and 'T')
+        var props = {
+            "Button Name": "Window CleverTap Button",
+            "Page": "Test Page",
+            "Method": "CleverTap.pushEvent"
+        };
+        
+        if (window.CleverTap) {
+            // Call Android interface with proper JSON stringification
+            CleverTap.pushEvent("Button Clicked", JSON.stringify(props));
+            logEvent('Event: Button Click tracked via window.CleverTap');
+        } else {
+            logEvent('Warning: window.CleverTap interface not found');
+        }
+    });
+
     // Track add to cart
     document.getElementById('btn-add-to-cart').addEventListener('click', function() {
         clevertap.event.push("Product Added to Cart", {
