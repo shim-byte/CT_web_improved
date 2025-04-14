@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CleverTap Integration Test</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- CleverTap SDK -->
+    <script type="text/javascript">
+        var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[], privacy:[]};
+    // replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
+   clevertap.account.push({"id": "W8W-6R9-6K7Z"});
+   clevertap.privacy.push({optOut: false}); //set the flag to true, if the user of the device opts out of sharing their data
+   clevertap.privacy.push({useIP: false}); //set the flag to true, if the user agrees to share their IP data
+    (function () {
+            var wzrk = document.createElement('script');
+            wzrk.type = 'text/javascript';
+            wzrk.async = true;
+            wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/clevertap.min.js';        
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wzrk, s);
+     })();
+   </script>
+   
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <header class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto">
+            <h1 class="text-2xl font-bold">CleverTap Integration Test</h1>
+        </div>
+    </header>
+    
+    <main class="container mx-auto p-4">
+        <section class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4">User Identification</h2>
+            <div class="mb-4">
+                <label for="user-id" class="block text-gray-700 mb-2">Identity (User ID) <span class="text-gray-400 text-sm">Optional</span></label>
+                <input type="text" id="user-id" class="w-full p-2 border rounded" placeholder="Enter unique identifier">
+            </div>
+            <div class="mb-4">
+                <label for="user-email" class="block text-gray-700 mb-2">Email <span class="text-gray-400 text-sm">Optional</span></label>
+                <input type="email" id="user-email" class="w-full p-2 border rounded" placeholder="Enter email address">
+            </div>
+            <div class="mb-4">
+                <label for="user-name" class="block text-gray-700 mb-2">Name <span class="text-gray-400 text-sm">Optional</span></label>
+                <input type="text" id="user-name" class="w-full p-2 border rounded" placeholder="Enter full name">
+            </div>
+            <div class="mb-4">
+                <label for="user-phone" class="block text-gray-700 mb-2">Phone <span class="text-gray-400 text-sm">Optional</span></label>
+                <input type="tel" id="user-phone" class="w-full p-2 border rounded" placeholder="Enter phone number">
+            </div>
+            <button id="identify-user" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Login User</button>
+        </section>
+        
+        <section class="bg-white rounded-lg shadow-md p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4">Track Events</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <button id="btn-page-view" class="bg-green-500 text-white p-3 rounded hover:bg-green-600">Track Page View</button>
+                <button id="btn-button-click" class="bg-purple-500 text-white p-3 rounded hover:bg-purple-600">Track Button Click</button>
+                <button id="btn-add-to-cart" class="bg-yellow-500 text-white p-3 rounded hover:bg-yellow-600">Track Add to Cart</button>
+                <button id="btn-purchase" class="bg-red-500 text-white p-3 rounded hover:bg-red-600">Track Purchase</button>
+            </div>
+        </section>
+        
+        <section class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-semibold mb-4">Event Log</h2>
+            <div id="event-log" class="bg-gray-100 p-4 rounded h-40 overflow-auto">
+                <p class="text-gray-500">Events will appear here...</p>
+            </div>
+        </section>
+    </main>
+    
+    <script src="app.js"></script>
+</body>
+</html>
